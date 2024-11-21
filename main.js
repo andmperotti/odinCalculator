@@ -34,7 +34,7 @@ let resultDisplay = document.querySelector('#resultDisplay')
 let currentTotal = 0;
 resultDisplay.textContent=currentTotal
 
-
+let currentInput = null;
 //Each time operate is called === update the display to the user.
 
 //round long decimals to a point so they don't overflow the display
