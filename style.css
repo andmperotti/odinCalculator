@@ -1,0 +1,21 @@
+/*Do this before continuing js, that way you can hit the buttons you wnat to hit on the screen*/
+#resultDisplay {
+    text-align: right;
+    background-color: white;;
+}
+
+#buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button {
+    background-color: white;
+    width: 50px;
+    margin: 10px;
+    text-align: center;
+}
+
+body{
+    background-color: red;
+}
