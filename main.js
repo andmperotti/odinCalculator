@@ -14,7 +14,19 @@ function divide(a,b){
     return a/b
 }
 
-//create an 'operate' function that takes in 3 arguments: 2 integers and 1 operator, and this function will call the appropriate earlier declared function depending on the operator given.
+function operate(firstNum, operator, secondNum){
+    if(operator==='+'){
+        add(firstNum,secondNum)
+    }else if(operator==='-'){
+        subtract(firstNum,secondNum)
+    }else if(operator==='*'){
+        multiply(firstNum,secondNum)
+    }else if(operator==='/'){
+        divide(firstNum,secondNum)
+    }
+}
+//If I recall correctly from the past doing this exercise in other courses there is a way to use an object to store functions and then call on them from that object...
+
 
 //create functions that run the operations (listeners) and place the results into the display of the calculator. 
 //Don't forget to save the output as a variable as it will be usable with any proceeding operations. ex 1+1-2, 1+1 needs to be solved and displayed as they hit + and then 2 and then that total needs to display
