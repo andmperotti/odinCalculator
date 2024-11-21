@@ -1,5 +1,18 @@
-//create functions for operations: add, subtract, multiply, divide
+function add(a,b){
+    return a+b
+}
 
+function subtract(a,b){
+    return a-b
+}
+
+function multiply(a,b){
+    return a*b
+}
+
+function divide(a,b){
+    return a/b
+}
 
 //create an 'operate' function that takes in 3 arguments: 2 integers and 1 operator, and this function will call the appropriate earlier declared function depending on the operator given.
 
