@@ -30,6 +30,11 @@ function operate(firstNum, operator, secondNum){
 
 //create functions that run the operations (listeners) and place the results into the display of the calculator. 
 //Don't forget to save the output as a variable as it will be usable with any proceeding operations. ex 1+1-2, 1+1 needs to be solved and displayed as they hit + and then 2 and then that total needs to display
+let resultDisplay = document.querySelector('#resultDisplay')
+let currentTotal = 0;
+resultDisplay.textContent=currentTotal
+
+
 //Each time operate is called === update the display to the user.
 
 //round long decimals to a point so they don't overflow the display
