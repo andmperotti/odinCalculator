@@ -14,7 +14,9 @@ function modulos(a,b){
     return +a % +b
 }
 
-//Create three variables for the two integer inputs and the operator, these will be used in multiple places. 
+let firstValue = 0
+let inputOperator = ''
+let secondValue = 0
 
 //Create an 'operate' function that takes those three variables and invokes one of the basic functions from above. Update the display with the result of the invoked function.
 
