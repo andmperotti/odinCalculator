@@ -52,6 +52,17 @@ function displayOnCalculator(val){
 }
 
 
+//Create listeners on the 'buttons' of the calculator to invoke actions.
+
+
+
+
+
+
+
+
+
+
 //ec:
 //decimal button for making floating point integers, disallow the use of it when it has already been used
 //add a backspace button so the user can undo their last input if they clicked the wrong number than they wanted
@@ -63,5 +74,5 @@ function displayOnCalculator(val){
 //display a snarky error message if the user tries to divide by 0, and of course disallow that from working
 
 
-//I think the operate function should be called not only when '=' key is pressed but also each time an operator is pressed, that way if there was a running total as the user is typing/pressing integers and then operators continually then the display will show the running total, not just when '=' is pressed. The difference would be that operate would be invoked with a previous total and with the new input digit and operator.
+//I think the operate function should be called not only when '=' key is pressed but also each time an operator is pressed, that way if there was a running total as the user is typing/pressing integers and then operators continually being pressed then the display will show the running total, not just when '=' is pressed. The difference would be that operate would be invoked with a previous total and with the new input digit and operator.
 
