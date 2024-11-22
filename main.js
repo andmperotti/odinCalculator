@@ -19,7 +19,6 @@ let inputOperator = ''
 let currentTotal = 0
 let perviousOperator = ''
 
-//Create an 'operate' function that takes those three variables and invokes one of the basic functions from above. Update the display with the result of the invoked function.
 function operate(operator, valueA, valueB){
     if(operator==="+"){
         currentTotal=add(valueA, valueB)
@@ -51,6 +50,7 @@ function clearAll(){
     currentTotal=0
     displayOnCalculator(0)
 }
+
 //Create a function that populates the display, and apply it to when the user clicks on digit buttons, and after the operate function has been invoked.
 function displayOnCalculator(val){
     document.querySelector('#resultDisplay').textContent=val
