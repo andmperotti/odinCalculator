@@ -1,4 +1,18 @@
-//create functions that mimic the basic math operators a calculator contains; add, subtract, multiply, and divide. Also modulos as I think that would be beneficial to have.
+function add(a,b){
+    return +a + +b
+}
+function subtract(a,b){
+    return +a - +b
+}
+function multiply(a,b){
+    return +a * +b
+}
+function divide(a,b){
+    return +a / +b
+}
+function modulos(a,b){
+    return +a % +b
+}
 
 //Create three variables for the two integer inputs and the operator, these will be used in multiple places. 
 
