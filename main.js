@@ -38,7 +38,6 @@ function operate(operator, valueA, valueB){
     }
 }
 let currentTotal = 0
-let previousOperatorUsed = ''
 //Create a function to clear everything
 
 //Create a function that populates the display, and apply it to when the user clicks on digit buttons, and after the operate function has been invoked.
