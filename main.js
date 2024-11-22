@@ -26,9 +26,9 @@ function operate(operator, firstValue, secondValue=firstValue){
 }
 
 function clearAll(){
-    inputOperator=''
     currentInput=0
     currentTotal=0
+    previousOperator=''
     displayOnCalculator(0)
 }
 
@@ -67,5 +67,9 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         let digitToAdd = target.textContent
         addToCurrentInput(digitToAdd)
         displayOnCalculator(currentInput)
+    }
+
+    if(target.textContent==='Clear'){
+        clearAll()
     }
 })
