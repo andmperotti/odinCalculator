@@ -19,11 +19,33 @@ let inputOperator = ''
 let secondValue = 0
 
 //Create an 'operate' function that takes those three variables and invokes one of the basic functions from above. Update the display with the result of the invoked function.
+function operate(operator, valueA, valueB){
+    if(operator==="+"){
+        currentTotal=valueA+valueB
+        displayOnCalculator(currentTotal)
+    }else if(operator==="-"){
+        currentTotal=valueA-valueB
+        displayOnCalculator(currentTotal)
+    }else if(operator==='*'){
+        currentTotal=valueA*valueB
+        displayOnCalculator(currentTotal)
+    }else if(operator==='/'){
+        currentTotal=valueA/valueB
+        displayOnCalculator(currentTotal)
+    }else if(operator==='%'){
+        currentTotal===valueA%valueB
+        displayOnCalculator(currentTotal)
+    }
+}
+let currentTotal = 0
 
 //Create a function to clear everything
 
 //Create a function that populates the display, and apply it to when the user clicks on digit buttons, and after the operate function has been invoked.
-
+let calculatorDisplay = document.querySelector('#resultDisplay')
+function displayOnCalculator(val){
+    calculatorDisplay.textContent=val
+}
 //Create a variable that stores the previous operation/operate total
 
 
