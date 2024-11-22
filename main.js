@@ -56,7 +56,10 @@ function displayOnCalculator(val){
     document.querySelector('#resultDisplay').textContent=val
 }
 
-
+function addToCurrentInput(val){
+    currentInput+=val
+    displayOnCalculator(currentInput)
+}
 //Create listeners on the 'buttons' of the calculator to invoke actions.
 document.querySelector('#buttonContainer', event=>{
     target = event.target
