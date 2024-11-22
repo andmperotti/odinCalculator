@@ -17,6 +17,7 @@ function modulos(a,b){
 let firstValue = 0
 let inputOperator = ''
 let secondValue = 0
+let currentTotal = 0
 
 //Create an 'operate' function that takes those three variables and invokes one of the basic functions from above. Update the display with the result of the invoked function.
 function operate(operator, valueA, valueB){
@@ -37,9 +38,14 @@ function operate(operator, valueA, valueB){
         displayOnCalculator(currentTotal)
     }
 }
-let currentTotal = 0
-//Create a function to clear everything
 
+function clearAll(){
+    firstValue=0
+    inputOperator=''
+    secondValue=0
+    currentTotal=0
+    displayOnCalculator(0)
+}
 //Create a function that populates the display, and apply it to when the user clicks on digit buttons, and after the operate function has been invoked.
 function displayOnCalculator(val){
     document.querySelector('#resultDisplay').textContent=val
