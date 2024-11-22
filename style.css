@@ -19,3 +19,7 @@
 body{
     background-color: red;
 }
+
+.operator:focus {
+    background-color: #33b9bb;
+}

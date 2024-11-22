@@ -15,43 +15,23 @@ function modulos(a,b){
 }
 
 let currentInput = 0
-let inputOperator = ''
 let currentTotal = 0
-let perviousOperator = ''
+// let operator = ''
+let previousOperator = ''
 
-function operate(operator, valueA, valueB){
-    if(operator==="+"){
-        currentTotal=add(valueA, valueB)
-        perviousOperator = '+'
-        displayOnCalculator(currentTotal)
-    }else if(operator==="-"){
-        currentTotal=subtract(valueA, valueB)
-        perviousOperator='-'
-        displayOnCalculator(currentTotal)
-    }else if(operator==='*'){
-        currentTotal=multiply(valueA, valueB)
-        perviousOperator='*'
-        displayOnCalculator(currentTotal)
-    }else if(operator==='/'){
-        currentTotal=divide(valueA, valueB)
-        perviousOperator='/'
-        displayOnCalculator(currentTotal)
-    }else if(operator==='%'){
-        currentTotal===modulos(valueA, valueB)
-        perviousOperator='%'
-        displayOnCalculator(currentTotal)
+function operate(operator, firstValue, secondValue=firstValue){
+    if(operator==='+'){
+        return add(currentTotal, currentInput)
     }
 }
 
 function clearAll(){
-    firstValue=0
     inputOperator=''
-    secondValue=0
+    currentInput=0
     currentTotal=0
     displayOnCalculator(0)
 }
 
-//Create a function that populates the display, and apply it to when the user clicks on digit buttons, and after the operate function has been invoked.
 function displayOnCalculator(val){
     document.querySelector('#resultDisplay').textContent=val
 }
@@ -60,30 +40,32 @@ function addToCurrentInput(val){
     currentInput+=val
     displayOnCalculator(currentInput)
 }
-//Create listeners on the 'buttons' of the calculator to invoke actions.
-document.querySelector('#buttonContainer', event=>{
+
+document.querySelector('#buttonContainer').addEventListener('click', event=>{
     target = event.target
+    //testing clicks
+    // console.log(Array.from(target.classList).includes('operator'))
 
+    //when you click on an operator button
+    if(Array.from(target.classList).includes('operator')){
+        let currentOperator = target.textContent
+        //if there is no previousOperator used
+        if(previousOperator===''){
+            currentTotal=currentInput
+            previousOperator = currentOperator
+        }else if(previousOperator==='='){ //if the previous is '='
+            displayOnCalculator(currentTotal)
+            currentInput=0
+        }else{ //if there is a previous operator used
+            currentTotal=operate(currentOperator, currentTotal, currentInput)
+            displayOnCalculator(currentTotal)
+            previousOperator=currentOperator
+        }
+    }
+    //when you click on any digit key
+    if(Array.from(target.classList).includes('digit')){
+        let digitToAdd = target.textContent
+        addToCurrentInput(digitToAdd)
+        displayOnCalculator(currentInput)
+    }
 })
-
-
-
-
-
-
-
-
-
-//ec:
-//decimal button for making floating point integers, disallow the use of it when it has already been used
-//add a backspace button so the user can undo their last input if they clicked the wrong number than they wanted
-//add keyboard support
-
-//notes
-//round answers with long decimals so they don't overflow the display
-//disallow pressing of the = when it doesn't make sense to
-//display a snarky error message if the user tries to divide by 0, and of course disallow that from working
-
-
-//I think the operate function should be called not only when '=' key is pressed but also each time an operator is pressed, that way if there was a running total as the user is typing/pressing integers and then operators continually being pressed then the display will show the running total, not just when '=' is pressed. The difference would be that operate would be invoked with a previous total and with the new input digit and operator.
-
