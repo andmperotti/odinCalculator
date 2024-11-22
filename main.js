@@ -14,27 +14,32 @@ function modulos(a,b){
     return +a % +b
 }
 
-let firstValue = 0
+let currentInput = 0
 let inputOperator = ''
-let secondValue = 0
 let currentTotal = 0
+let perviousOperator = ''
 
 //Create an 'operate' function that takes those three variables and invokes one of the basic functions from above. Update the display with the result of the invoked function.
 function operate(operator, valueA, valueB){
     if(operator==="+"){
-        currentTotal=valueA+valueB
+        currentTotal=add(valueA, valueB)
+        perviousOperator = '+'
         displayOnCalculator(currentTotal)
     }else if(operator==="-"){
-        currentTotal=valueA-valueB
+        currentTotal=subtract(valueA, valueB)
+        perviousOperator='-'
         displayOnCalculator(currentTotal)
     }else if(operator==='*'){
-        currentTotal=valueA*valueB
+        currentTotal=multiply(valueA, valueB)
+        perviousOperator='*'
         displayOnCalculator(currentTotal)
     }else if(operator==='/'){
-        currentTotal=valueA/valueB
+        currentTotal=divide(valueA, valueB)
+        perviousOperator='/'
         displayOnCalculator(currentTotal)
     }else if(operator==='%'){
-        currentTotal===valueA%valueB
+        currentTotal===modulos(valueA, valueB)
+        perviousOperator='%'
         displayOnCalculator(currentTotal)
     }
 }
