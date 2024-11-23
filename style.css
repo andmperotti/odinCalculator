@@ -11,9 +11,11 @@
 
 .button {
     background-color: white;
-    width: 50px;
+    width: 75px;
+    height: 75px;
     margin: 10px;
     text-align: center;
+    /* vertical-align: center; */
 }
 
 body{
