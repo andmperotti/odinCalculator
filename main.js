@@ -80,5 +80,8 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
     //+/- button functionality
 
     //back button functionality
-    
+    if(target.textContent==='Back'){
+        currentInput=currentInput.substring(0,currentInput.length-1)
+        displayOnCalculator(currentInput)
+    }
 })
