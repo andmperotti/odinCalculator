@@ -71,15 +71,15 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         clearAll()
     }
 
-    // if(target.id="signButton"){
-    //     if(currentInput[0]==='-'){
-    //         currentInput=currentInput.substring(1)
-    //         displayOnCalculator(currentInput)
-    //     }else if(currentInput[0]!=='-'){
-    //         currentInput='-'+currentInput
-    //         displayOnCalculator(currentInput)
-    //     }
-    // }
+    if(target.id==="signButton"){
+        if(currentInput[0]==='-'){
+            currentInput=currentInput.substring(1)
+            displayOnCalculator(currentInput)
+        }else if(currentInput[0]!=='-'){
+            currentInput='-'+currentInput
+            displayOnCalculator(currentInput)
+        }
+    }
 
     if(target.textContent==='Back'){
         currentInput=currentInput.substring(0,currentInput.length-1)
