@@ -55,22 +55,13 @@ function addToCurrentInput(val){
 
 document.querySelector('#buttonContainer').addEventListener('click', event=>{
     target = event.target
-    //testing clicks
-    console.log(target.id)
 
-    //when you click on an operator button
-    if(Array.from(target.classList).includes('operator')){
-        let currentOperator = target.textContent
-
-    }
-
-    //when you click on any digit key
     if(Array.from(target.classList).includes('digit')){
         let digitToAdd = target.textContent
         addToCurrentInput(digitToAdd)
         displayOnCalculator(currentInput)    
     }
-    //when user clicks on the decimal button
+
     if(target.id==='decimalButton'){
         addToCurrentInput('.')
         displayOnCalculator(currentInput)
@@ -78,5 +69,11 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 
     if(target.textContent==='Clear'){
         clearAll()
+    }
+    
+    //when you click on an operator button
+    if(Array.from(target.classList).includes('operator')){
+        let currentOperator = target.textContent
+
     }
 })
