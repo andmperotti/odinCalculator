@@ -70,18 +70,25 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
     if(target.textContent==='Clear'){
         clearAll()
     }
-    
+
+    if(target.id="signButton"){
+        if(currentInput[0]==='-'){
+            currentInput=currentInput.substring(1)
+            displayOnCalculator(currentInput)
+        }else if(currentInput[0]!=='-'){
+            currentInput='-'+currentInput
+            displayOnCalculator(currentInput)
+        }
+    }
+
+    if(target.textContent==='Back'){
+        currentInput=currentInput.substring(0,currentInput.length-1)
+        displayOnCalculator(currentInput)
+    }
+
     //when you click on an operator button
     if(Array.from(target.classList).includes('operator')){
         let currentOperator = target.textContent
 
-    }
-
-    //+/- button functionality
-
-    //back button functionality
-    if(target.textContent==='Back'){
-        currentInput=currentInput.substring(0,currentInput.length-1)
-        displayOnCalculator(currentInput)
     }
 })
