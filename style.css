@@ -101,20 +101,21 @@ body{
     width: 100vw;
 }
 
-.button:active{
+.button:active, #signButton:active{
     color: white;
     background-color: black;
 }
 
 #clearButton:active {
     background-color: white;
+    color: black;
 }
 
 #backButton:active {
     background-color: red;
 }
 
-button.operator:focus {
+button.operator:not(#equalsButton):focus {
     background-color: #33b9bb;
 }
 
@@ -125,4 +126,10 @@ button.operator:focus {
     flex-direction: column;
     height: 300px;
     width: 450px;
+}
+
+.operator,
+#signButton,
+#decimalButton {
+    font-size: 150%;
 }
