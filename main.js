@@ -21,7 +21,7 @@ let previousOperator = ''
 function operate(operator, firstValue, secondValue=firstValue){
     if(operator==='+'){
         return add(firstValue, secondValue)
-    }else if(operator==='='){
+    }else if(operator==='-'){
         return subtract(firstValue, secondValue)
     }else if(operator==='*'){
         return multiply(firstValue, secondValue)
@@ -53,7 +53,7 @@ function addToCurrentInput(val){
     }
 }
 
-function replaceCurrentTotalWithCurrentInput(val){
+function replaceCurrentTotal(val){
     currentTotal=val
 }
 
@@ -79,6 +79,7 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         clearAll()
     }
 
+    //this isn't working with totals, maybe somehow if something is displayed and this is hit then the total = the current input and we can manipulate it -/+
     if(target.id==="signButton"){
         if(currentInput[0]==='-'){
             currentInput=currentInput.substring(1)
@@ -94,38 +95,38 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         displayOnCalculator(currentInput)
     }
 
-    //when you click on an operator button
     if(Array.from(target.classList).includes('operator')){
-        let operatorPressed = target.textContent
+        let operatorPressed = target
 
-        if(operatorPressed==='=' && previousOperator){
-            replaceCurrentTotalWithCurrentInput(operate(previousOperator, currentTotal, currentInput))
+        if(operatorPressed.id==='equalsButton' && previousOperator){
+            replaceCurrentTotal(
+                operate(previousOperator, currentTotal, currentInput)
+            )
             currentInput=''
             displayOnCalculator(currentTotal)
             previousOperator=''
-        }else if(operatorPressed==='=' && !previousOperator){
-            if(currentTotal===0){
-                replaceCurrentTotalWithCurrentInput(currentInput)
-                currentInput=''
+        }else if(operatorPressed.id==='equalsButton' && !previousOperator){
+            if(currentInput){
+                replaceCurrentTotal(currentInput)
                 displayOnCalculator(currentTotal)
-            }else if(currentTotal!=='0'){
-                incrementCurrentTotalOneArg(currentInput)
-                currentInput=''
+            }else{
                 displayOnCalculator(currentTotal)
             }
-        }else if(operatorPressed!=='=' && previousOperator){
-            replaceCurrentTotalWithCurrentInput(operate(previousOperator, currentTotal, currentInput))
+        }else if(operatorPressed.id!=='equalsButton' && previousOperator){
+            replaceCurrentTotal(operate(previousOperator, currentTotal, currentInput))
             currentInput=''
             displayOnCalculator(currentTotal)
-            previousOperator=operatorPressed
-        }else if(operatorPressed!=='=' && !previousOperator){
-            replaceCurrentTotalWithCurrentInput(currentInput)
-            currentInput=''
-            displayOnCalculator(currentTotal)
-            previousOperator=operatorPressed
+            previousOperator=operatorPressed.textContent
+        }else if(operatorPressed.id!=='equalsButton' && !previousOperator){
+            if(currentTotal==='0')
+                replaceCurrentTotal(currentInput)
+                currentInput=''
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorPressed.textContent
+            }else{
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorPressed.textContent
+            }
         }
     }
-        
-
-    
-})
+)
