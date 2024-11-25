@@ -139,3 +139,6 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         }
     }
 )
+
+
+//Limit the floating point digits... as entry and as return values.
