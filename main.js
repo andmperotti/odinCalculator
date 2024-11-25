@@ -63,8 +63,6 @@ function incrementCurrentTotalOneArg(val){
 
 document.querySelector('#buttonContainer').addEventListener('click', event=>{
     target = event.target
-    //for testing 
-    console.log(target)
 
     if(Array.from(target.classList).includes('digit')){
         let digitToAdd = target.textContent
@@ -110,6 +108,12 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         let operatorPressed = target
 
         if(operatorPressed.id==='equalsButton' && previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal=0
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
             replaceCurrentTotal(
                 operate(previousOperator, currentTotal, currentInput)
             )
@@ -117,6 +121,12 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
             displayOnCalculator(currentTotal)
             previousOperator=''
         }else if(operatorPressed.id==='equalsButton' && !previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal=0
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
             if(currentInput){
                 replaceCurrentTotal(currentInput)
                 displayOnCalculator(currentTotal)
@@ -124,11 +134,23 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
                 displayOnCalculator(currentTotal)
             }
         }else if(operatorPressed.id!=='equalsButton' && previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal=0
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
             replaceCurrentTotal(operate(previousOperator, currentTotal, currentInput))
             currentInput=''
             displayOnCalculator(currentTotal)
             previousOperator=operatorPressed.textContent
         }else if(operatorPressed.id!=='equalsButton' && !previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal=0
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
             if(currentTotal==='0')
                 replaceCurrentTotal(currentInput)
                 currentInput=''
