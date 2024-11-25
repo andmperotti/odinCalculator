@@ -157,3 +157,5 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 //Limit the floating point digits... as entry and as return values. 
 //Also limit the overall integer length to be displayed...
 //can fit 27 integer characters on display
+
+//add keyboard support
