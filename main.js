@@ -1,5 +1,5 @@
 function add(a,b){
-    return String(Number(a) + Number(b))
+    return String(Number(a)+Number(b))
 }
 function subtract(a,b){
     return String(Number(a)-Number(b))
@@ -154,8 +154,6 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 )
 
 
-//Limit the floating point digits... as entry and as return values. 
-//Also limit the overall integer length to be displayed...
-//can fit 27 integer characters on display
+//"You should round answers with long decimals so that they don’t overflow the display."
 
 //add keyboard support
