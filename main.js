@@ -1,17 +1,17 @@
 function add(a,b){
-    return Number(a) + Number(b)
+    return String(Number(a) + Number(b))
 }
 function subtract(a,b){
-    return Number(a)-Number(b)
+    return String(Number(a)-Number(b))
 }
 function multiply(a,b){
-    return Number(a)*Number(b)
+    return String(Number(a)*Number(b))
 }
 function divide(a,b){
-    return Number(a)/Number(b)
+    return String(Number(a)/Number(b))
 }
 function modulos(a,b){
-    return Number(a)%Number(b)
+    return String(Number(a)%Number(b))
 }
 
 let currentInput = '0'
@@ -79,14 +79,23 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         clearAll()
     }
 
-    //this isn't working with totals, maybe somehow if something is displayed and this is hit then the total = the current input and we can manipulate it -/+
     if(target.id==="signButton"){
-        if(currentInput[0]==='-'){
-            currentInput=currentInput.substring(1)
-            displayOnCalculator(currentInput)
-        }else if(currentInput[0]!=='-'){
-            currentInput='-'+currentInput
-            displayOnCalculator(currentInput)
+        if(currentInput){
+            if(currentInput[0]==='-'){
+                currentInput=currentInput.substring(1)
+                displayOnCalculator(currentInput)
+            }else if(currentInput[0]!=='-'){
+                currentInput='-'+currentInput
+                displayOnCalculator(currentInput)
+            }
+        }else{
+            if(!currentInput&&currentTotal[0]==='-'){
+                currentTotal=currentTotal.substring(1)
+                displayOnCalculator(currentTotal)
+            }else if(!currentInput&&currentTotal[0]!=='-'&&currentTotal!=='0'){
+                currentTotal='-'+currentTotal
+                displayOnCalculator(currentTotal)
+            }
         }
     }
 
