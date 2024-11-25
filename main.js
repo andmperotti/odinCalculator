@@ -53,6 +53,14 @@ function addToCurrentInput(val){
     }
 }
 
+function replaceCurrentTotalWithCurrentInput(val){
+    currentTotal=val
+}
+
+function incrementCurrentTotalOneArg(val){
+    currentTotal+=val
+}
+
 document.querySelector('#buttonContainer').addEventListener('click', event=>{
     target = event.target
 
@@ -89,23 +97,33 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
     //when you click on an operator button
     if(Array.from(target.classList).includes('operator')){
         let operatorPressed = target.textContent
-        
-        // if operator === =, previousOperator
-        // currentTotal=operate(previousOperator,currentTotal, currentInput)
-        // display(currentTotal)
-        // previousOperator=''
-        // else if operator === =, !previousOperator
-        // display(currentTotal)
-        // else if operator !== =, and previousOperator
-        // currentTotal=operate(previousOperator, currentTotal, currentinput)
-        // display(currentTotal)
-        // previousOperator=target.textContent
-        // else if operator !== =, and !previousOperator
-        // display(currentTotal)
-        // previousOperator=target.textContent
 
-
-
+        if(operatorPressed==='=' && previousOperator){
+            replaceCurrentTotalWithCurrentInput(operate(previousOperator, currentTotal, currentInput))
+            currentInput=''
+            displayOnCalculator(currentTotal)
+            previousOperator=''
+        }else if(operatorPressed==='=' && !previousOperator){
+            if(currentTotal===0){
+                replaceCurrentTotalWithCurrentInput(currentInput)
+                currentInput=''
+                displayOnCalculator(currentTotal)
+            }else if(currentTotal!=='0'){
+                incrementCurrentTotalOneArg(currentInput)
+                currentInput=''
+                displayOnCalculator(currentTotal)
+            }
+        }else if(operatorPressed!=='=' && previousOperator){
+            replaceCurrentTotalWithCurrentInput(operate(previousOperator, currentTotal, currentInput))
+            currentInput=''
+            displayOnCalculator(currentTotal)
+            previousOperator=operatorPressed
+        }else if(operatorPressed!=='=' && !previousOperator){
+            replaceCurrentTotalWithCurrentInput(currentInput)
+            currentInput=''
+            displayOnCalculator(currentTotal)
+            previousOperator=operatorPressed
+        }
     }
         
 
