@@ -141,4 +141,5 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 )
 
 
-//Limit the floating point digits... as entry and as return values.
+//Limit the floating point digits... as entry and as return values. 
+//Also limit the overall integer length to be displayed...
