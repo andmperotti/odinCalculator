@@ -177,4 +177,114 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
     }
 )
 
+
+
+
+
+
 //add keyboard support
+window.addEventListener("keydown", event=>{
+    let numKeys = ['1', '2','3','4','5','6','7','8','9','0']
+
+    if(numKeys.includes(event.key)){
+        let digitToAdd = event.key
+        addToCurrentInput(digitToAdd)
+        displayOnCalculator(currentInput)    
+    }
+
+    if(event.key==='.'){
+        addToCurrentInput('.')
+        displayOnCalculator(currentInput)
+    }
+
+    if(event.key==='Escape'){
+        clearAll()
+    }
+
+    //commented out below sections as the - and + keys need to be linked to the add and subtract functions
+    // if(event.key==="-"){
+    //     if(currentInput){
+    //         if(currentInput[0]!=='-'){
+    //             currentInput='-'+currentInput
+    //             displayOnCalculator(currentInput)
+    //         }
+    //     }else{
+    //         if(!currentInput&&currentTotal[0]!=='-'){
+    //             currentTotal='-'+currentTotal
+    //             displayOnCalculator(currentTotal)
+    //         }
+    //     }
+    // }
+
+    // if(event.key==="+"){
+    //     if(currentInput){
+    //         if(currentInput[0]==='-'){
+    //             currentInput=currentInput.substring(1)
+    //             displayOnCalculator(currentInput)
+    //         }
+    //     }else{
+    //         if(!currentInput&&currentTotal[0]==='-'){
+    //             currentTotal=currentTotal.substring(1)
+    //             displayOnCalculator(currentTotal)
+    //         }
+    //     }
+    // }
+
+    if(event.key==='Backspace'||event.key==="Delete"){
+        currentInput=currentInput.substring(0,currentInput.length-1)
+        displayOnCalculator(currentInput)
+    }
+
+    let operatorKeys = ['%', "/", "*", "-", "+", "Enter"]
+
+    if(operatorKeys.includes(event.key)){
+        let operatorKeyed = event
+        console.log(operatorKeyed)
+
+        if(operatorKeyed.key==="Enter" && previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal='0'
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+                return ''
+            }
+            replaceCurrentTotal(
+                operate(previousOperator, currentTotal, currentInput)
+            )
+            currentInput=''
+            displayOnCalculator(currentTotal)
+            previousOperator=''
+        }else if(operatorKeyed.key==="Enter" && !previousOperator){
+            if(currentInput){
+                replaceCurrentTotal(currentInput)
+                displayOnCalculator(currentTotal)
+            }else{
+                displayOnCalculator(currentTotal)
+            }
+        }else if(operatorKeyed.key!=="Enter" && previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal='0'
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
+            replaceCurrentTotal(operate(previousOperator, currentTotal, currentInput))
+            currentInput=''
+            displayOnCalculator(currentTotal)
+            previousOperator=operatorKeyed.key
+        }else if(operatorKeyed.key!=="Enter" && !previousOperator){
+            if(currentTotal==='0')
+                replaceCurrentTotal(currentInput)
+                currentInput=''
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorKeyed.key
+            }else{
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorKeyed.key
+            }
+        }
+    }
+)
+
+//there is still a bug that sometimes when the currentTotal is 0 and you press an operator it doesn't display the currentTotal
