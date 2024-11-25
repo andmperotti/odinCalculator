@@ -109,10 +109,11 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 
         if(operatorPressed.id==='equalsButton' && previousOperator){
             if(previousOperator==='/'&&currentInput==='0'){
-                currentTotal=0
+                currentTotal='0'
                 currentInput=''
                 displayOnCalculator(`You can't divide by 0`)
                 previousOperator=''
+                return ''
             }
             replaceCurrentTotal(
                 operate(previousOperator, currentTotal, currentInput)
@@ -121,12 +122,6 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
             displayOnCalculator(currentTotal)
             previousOperator=''
         }else if(operatorPressed.id==='equalsButton' && !previousOperator){
-            if(previousOperator==='/'&&currentInput==='0'){
-                currentTotal=0
-                currentInput=''
-                displayOnCalculator(`You can't divide by 0`)
-                previousOperator=''
-            }
             if(currentInput){
                 replaceCurrentTotal(currentInput)
                 displayOnCalculator(currentTotal)
@@ -135,7 +130,7 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
             }
         }else if(operatorPressed.id!=='equalsButton' && previousOperator){
             if(previousOperator==='/'&&currentInput==='0'){
-                currentTotal=0
+                currentTotal='0'
                 currentInput=''
                 displayOnCalculator(`You can't divide by 0`)
                 previousOperator=''
@@ -146,7 +141,7 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
             previousOperator=operatorPressed.textContent
         }else if(operatorPressed.id!=='equalsButton' && !previousOperator){
             if(previousOperator==='/'&&currentInput==='0'){
-                currentTotal=0
+                currentTotal='0'
                 currentInput=''
                 displayOnCalculator(`You can't divide by 0`)
                 previousOperator=''
