@@ -128,8 +128,6 @@ button.operator:not(#equalsButton):focus {
     width: 450px;
 }
 
-.operator,
-#signButton,
-#decimalButton {
+button {
     font-size: 150%;
 }
