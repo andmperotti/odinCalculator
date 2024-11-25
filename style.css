@@ -81,6 +81,14 @@ table {
     height: 50px;
     align-content: center;
 }
+.operator, #signButton{
+    background-color: lightblue;
+}
+
+#clearButton, #backButton{
+    background-color: black;
+    color: white;
+}
 
 body{
     background-color: red;
