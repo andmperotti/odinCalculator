@@ -93,7 +93,20 @@ body{
     width: 100vw;
 }
 
-.operator:focus {
+.button:active{
+    color: white;
+    background-color: black;
+}
+
+#clearButton:active {
+    background-color: white;
+}
+
+#backButton:active {
+    background-color: red;
+}
+
+button.operator:focus {
     background-color: #33b9bb;
 }
 
