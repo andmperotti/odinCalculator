@@ -63,6 +63,8 @@ function incrementCurrentTotalOneArg(val){
 
 document.querySelector('#buttonContainer').addEventListener('click', event=>{
     target = event.target
+    //for testing 
+    console.log(target)
 
     if(Array.from(target.classList).includes('digit')){
         let digitToAdd = target.textContent
@@ -143,3 +145,4 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 
 //Limit the floating point digits... as entry and as return values. 
 //Also limit the overall integer length to be displayed...
+//can fit 27 integer characters on display
