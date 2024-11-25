@@ -1,17 +1,41 @@
 function add(a,b){
-    return String(Number(a)+Number(b))
+    if(Number(a)%1===0&&Number(b)%1===0){
+        return String(Number(a)+Number(b))
+    }else{
+        return String((Number(a)+Number(b)).toFixed(2))
+    }
 }
+
 function subtract(a,b){
-    return String(Number(a)-Number(b))
+    if(Number(a)%1===0&&Number(b)%1===0){
+        return String(Number(a)-Number(b))
+    }else{
+        return String((Number(a)-Number(b)).toFixed(2))
+    }
 }
+
 function multiply(a,b){
-    return String(Number(a)*Number(b))
+    if(Number(a)%1===0&&Number(b)%1===0){
+        return String(Number(a)*Number(b))
+    }else{ 
+        return String((Number(a)*Number(b)).toFixed(2))
+    }
 }
+
 function divide(a,b){
-    return String(Number(a)/Number(b))
+    if(Number(a)%1===0&&Number(b)%1===0){
+        return String(Number(a)/Number(b))
+    }else{
+        return String((Number(a)/Number(b)).toFixed(2))
+    }
 }
+
 function modulos(a,b){
-    return String(Number(a)%Number(b))
+    if(Number(a)%1===0&&Number(b)%1===0){
+        return String(Number(a)%Number(b))
+    }else{
+        return String((Number(a)%Number(b)).toFixed(2))
+    }
 }
 
 let currentInput = '0'
@@ -152,8 +176,5 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         }
     }
 )
-
-
-//"You should round answers with long decimals so that they don’t overflow the display."
 
 //add keyboard support
