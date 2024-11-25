@@ -288,3 +288,4 @@ window.addEventListener("keydown", event=>{
 )
 
 //there is still a bug that sometimes when the currentTotal is 0 and you press an operator it doesn't display the currentTotal
+//the operations that should be invoked with keydowns are not being invoked.
