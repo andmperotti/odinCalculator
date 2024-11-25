@@ -140,12 +140,6 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
             displayOnCalculator(currentTotal)
             previousOperator=operatorPressed.textContent
         }else if(operatorPressed.id!=='equalsButton' && !previousOperator){
-            if(previousOperator==='/'&&currentInput==='0'){
-                currentTotal='0'
-                currentInput=''
-                displayOnCalculator(`You can't divide by 0`)
-                previousOperator=''
-            }
             if(currentTotal==='0')
                 replaceCurrentTotal(currentInput)
                 currentInput=''
