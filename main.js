@@ -1,17 +1,17 @@
 function add(a,b){
-    return +a + +b
+    return Number(a) + Number(b)
 }
 function subtract(a,b){
-    return +a - +b
+    return Number(a)-Number(b)
 }
 function multiply(a,b){
-    return +a * +b
+    return Number(a)*Number(b)
 }
 function divide(a,b){
-    return +a / +b
+    return Number(a)/Number(b)
 }
 function modulos(a,b){
-    return +a % +b
+    return Number(a)%Number(b)
 }
 
 let currentInput = '0'
@@ -88,8 +88,26 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
 
     //when you click on an operator button
     if(Array.from(target.classList).includes('operator')){
-        let currentOperator = target.textContent
+        let operatorPressed = target.textContent
+        
+        // if operator === =, previousOperator
+        // currentTotal=operate(previousOperator,currentTotal, currentInput)
+        // display(currentTotal)
+        // previousOperator=''
+        // else if operator === =, !previousOperator
+        // display(currentTotal)
+        // else if operator !== =, and previousOperator
+        // currentTotal=operate(previousOperator, currentTotal, currentinput)
+        // display(currentTotal)
+        // previousOperator=target.textContent
+        // else if operator !== =, and !previousOperator
+        // display(currentTotal)
+        // previousOperator=target.textContent
+
 
 
     }
+        
+
+    
 })
