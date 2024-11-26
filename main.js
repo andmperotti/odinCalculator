@@ -128,6 +128,11 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         displayOnCalculator(currentInput)
     }
 
+
+
+
+
+
     if(Array.from(target.classList).includes('operator')){
         let operatorPressed = target
 
@@ -137,7 +142,6 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
                 currentInput=''
                 displayOnCalculator(`You can't divide by 0`)
                 previousOperator=''
-                return ''
             }
             replaceCurrentTotal(
                 operate(previousOperator, currentTotal, currentInput)
@@ -239,6 +243,7 @@ window.addEventListener("keydown", event=>{
 
     if(operatorKeys.includes(event.key)){
         let operatorKeyed = event
+        //console.log event of key being pressed down, this is for testing purposes
         console.log(operatorKeyed)
 
         if(operatorKeyed.key==="Enter" && previousOperator){
@@ -247,7 +252,6 @@ window.addEventListener("keydown", event=>{
                 currentInput=''
                 displayOnCalculator(`You can't divide by 0`)
                 previousOperator=''
-                return ''
             }
             replaceCurrentTotal(
                 operate(previousOperator, currentTotal, currentInput)
@@ -288,4 +292,4 @@ window.addEventListener("keydown", event=>{
 )
 
 //there is still a bug that sometimes when the currentTotal is 0 and you press an operator it doesn't display the currentTotal
-//the operations that should be invoked with keydowns are not being invoked.
+//the operations that should be invoked with keydowns are not being invoked. //+3= displays 0 , so that's not right
