@@ -81,11 +81,6 @@ function replaceCurrentTotal(val){
     currentTotal=val
 }
 
-
-
-
-
-
 document.querySelector('#buttonContainer').addEventListener('click', event=>{
     target = event.target
 
@@ -129,7 +124,6 @@ document.querySelector('#buttonContainer').addEventListener('click', event=>{
         displayOnCalculator(currentInput)
     }
 
-    //click event support
     if(Array.from(target.classList).includes('operator')){
         let operatorPressed = target
 
@@ -221,13 +215,73 @@ window.addEventListener("keydown", event=>{
         displayOnCalculator(currentInput)
     }
     
-    let operatorKeys = ['%', "/", "*", "-", "+", "Enter"]
+    let operatorKeys = ["%", "/", "*", "-", "+", "Enter"]
 
     if(operatorKeys.includes(event.key)){
         let operatorKeyed = event
-        //console.log event of key being pressed down, this is for testing purposes
-        console.log(operatorKeyed)
 
+
+        if(operatorKeyed.key==='Enter' && previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal='0'
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
+            if(currentInput.length>0){
+                replaceCurrentTotal(
+                    operate(previousOperator, currentTotal, currentInput)
+                )
+                currentInput=''
+                displayOnCalculator(currentTotal)
+                previousOperator=''
+            }else if(currentInput.length===0){
+                replaceCurrentTotal(
+                    operate(previousOperator, currentTotal, currentTotal)
+                )
+                displayOnCalculator(currentTotal)
+                previousOperator=''
+            }
+        }else if(operatorKeyed.key==='Enter' && !previousOperator){
+            if(currentInput){
+                replaceCurrentTotal(currentInput)
+                currentInput=''
+                displayOnCalculator(currentTotal)
+            }else{
+                displayOnCalculator(currentTotal)
+            }
+        }else if(operatorKeyed.key!=='Enter' && previousOperator){
+            if(previousOperator==='/'&&currentInput==='0'){
+                currentTotal='0'
+                currentInput=''
+                displayOnCalculator(`You can't divide by 0`)
+                previousOperator=''
+            }
+            if(currentInput.length>1){
+                replaceCurrentTotal(
+                    operate(previousOperator, currentTotal, currentInput)
+                )
+                currentInput=''
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorKeyed.key
+            }else if(currentInput.length<1){
+                replaceCurrentTotal(
+                    operate(previousOperator, currentTotal, currentTotal)
+                )
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorKeyed.key
+            }
+        }else if(operatorKeyed.key!=='Enter' && !previousOperator){
+            if(currentInput.length>0&&currentTotal==='0'){
+                replaceCurrentTotal(currentInput)
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorKeyed.key
+                currentInput=''
+            }else if(currentInput.length<1){
+                displayOnCalculator(currentTotal)
+                previousOperator=operatorKeyed.key
+            }
+        }
        
     }
 })
